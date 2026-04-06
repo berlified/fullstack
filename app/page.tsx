@@ -1,13 +1,14 @@
 import { Show, SignInButton, UserButton } from "@clerk/nextjs";
+import { Button } from "@/components/ui/button";
 
 const page = () => {
   return (
     <div>
       <Show when="signed-out">
         <SignInButton mode="modal">
-          <button className="bg-white text-black">
+          <Button className="bg-black text-white">
             Sign In 
-          </button>
+          </Button>
         </SignInButton>
       </Show>
 
