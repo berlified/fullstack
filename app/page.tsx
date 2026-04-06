@@ -1,12 +1,14 @@
 import { Show, SignInButton, UserButton } from "@clerk/nextjs";
 import { Button } from "@/components/ui/button";
+import { ModeToggle } from "@/components/ui/mode-toggle";
 
 const page = () => {
   return (
     <div>
+      <ModeToggle />
       <Show when="signed-out">
         <SignInButton mode="modal">
-          <Button className="bg-black text-white">
+          <Button variant="default" size="default">
             Sign In 
           </Button>
         </SignInButton>

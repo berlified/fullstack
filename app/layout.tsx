@@ -3,6 +3,8 @@ import { ClerkProvider, Show, SignInButton, SignUpButton, UserButton } from '@cl
 import { Geist, Geist_Mono, Inter } from 'next/font/google'
 import './globals.css'
 import { cn } from "@/lib/utils";
+import { ThemeProvider } from "@/components/theme-provider"
+
 
 const inter = Inter({subsets:['latin'],variable:'--font-sans'});
 
@@ -27,11 +29,22 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" className={cn("font-sans", inter.variable)}>
+    <html
+      lang="en"
+      className={cn("font-sans", inter.variable)}
+      suppressHydrationWarning
+    >
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-        <ClerkProvider>
-          {children}
-        </ClerkProvider>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme='system'
+          enableSystem
+          disableTransitionOnChange>
+
+          <ClerkProvider>
+            {children}
+          </ClerkProvider>
+        </ThemeProvider>
       </body>
     </html>
   )
