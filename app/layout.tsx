@@ -4,6 +4,7 @@ import { Geist, Geist_Mono, Inter } from 'next/font/google'
 import './globals.css'
 import { cn } from "@/lib/utils";
 import { ThemeProvider } from "@/components/theme-provider"
+import Navbar from '@/components/Navbar';
 
 
 const inter = Inter({subsets:['latin'],variable:'--font-sans'});
@@ -29,6 +30,7 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
+    <ClerkProvider>
     <html
       lang="en"
       className={cn("font-sans", inter.variable)}
@@ -39,13 +41,15 @@ export default function RootLayout({
           attribute="class"
           defaultTheme='system'
           enableSystem
-          disableTransitionOnChange>
-
-          <ClerkProvider>
-            {children}
-          </ClerkProvider>
+          disableTransitionOnChange
+        >
+         <div className='min-h-screen'>
+              <Navbar />
+              {children}
+         </div>
         </ThemeProvider>
       </body>
     </html>
+    </ClerkProvider>
   )
 }

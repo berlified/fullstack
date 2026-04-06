@@ -1,8 +1,14 @@
-import React from 'react'
+import { Show, SignInButton, UserButton } from "@clerk/nextjs";
+import { Button } from "@/components/ui/button";
 
 const page = () => {
   return (
-    <div>page</div>
+    <div>
+        <Show when="signed-in">
+        <UserButton/> 
+      </Show>
+
+    </div>
   )
 }
 
